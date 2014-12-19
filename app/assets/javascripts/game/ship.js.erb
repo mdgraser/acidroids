@@ -13,7 +13,7 @@
 		this.game = options.game;
 		this.dir = -Math.PI / 2;
 		this.img = new Image();
-		this.img.src = "<%= asset_path('ship1-invert.png') %>"
+		this.img.src = Ship.IMAGE();
 		this.invincible = true;
 		this.destroyed = false;
 		this.counter = 0;
@@ -33,8 +33,8 @@
 	Ship.MAX_SPEED = 9;
 	Ship.IMAGE = function () {
 		randInt = Math.floor(Math.random() * 5);
-		return ['assets/images/ship2-invert.png', 'assets/images/ship3-invert.png',
-						'assets/images/ship4-invert.png', 'assets/images/ship5-invert.png'][randInt];
+		return ["<%= asset_path('ship1-invert.png') %>", "<%= asset_path('ship2-invert.png') %>", "<%= asset_path('ship3-invert.png') %>",
+						"<%= asset_path('ship4-invert.png') %>", "<%= asset_path('ship5-invert.png') %>"][randInt];
 	};
 
 
