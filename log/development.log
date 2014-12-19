@@ -88611,3 +88611,17 @@ Processing by HighScoresController#index as JSON
   [1m[36mHighScore Load (1.6ms)[0m  [1mSELECT "high_scores".* FROM "high_scores"[0m
   Rendered high_scores/index.json.jbuilder (6.8ms)
 Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 1.6ms)
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHighScores (20141217195406)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE "high_scores" ("id" serial primary key, "name" character varying(255) NOT NULL, "score" integer NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_high_scores_on_score" ON "high_scores"  ("score")
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141217195406"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (9.2ms)[0m  [1mINSERT INTO "high_scores" ("created_at", "name", "score", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-19 01:42:10.108954"], ["name", "Matt"], ["score", 9001], ["updated_at", "2014-12-19 01:42:10.108954"]]
+  [1m[35m (0.6ms)[0m  COMMIT
