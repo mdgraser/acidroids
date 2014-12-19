@@ -90197,3 +90197,265 @@ Started GET "/assets/explosion.png" for 127.0.0.1 at 2014-12-18 18:26:02 -0800
 
 
 Started GET "/assets/ship4-invert.png" for 127.0.0.1 at 2014-12-18 18:26:05 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-18 18:35:24 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#root as HTML
+  Rendered home/root.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 84ms
+
+ActionView::Template::Error (undefined method `imagePath' for #<#<Class:0x007f86ec2cff68>:0x007f86ebee6708>
+  (in /Users/matt/Acidroids/app/assets/javascripts/game/ship.js.erb)):
+    4:   <title>Acidroids</title>
+    5:   <link rel="shortcut icon" href="assets/acidroids.ico" />
+    6:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    7:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    8:   <%= csrf_meta_tags %>
+    9: </head>
+   10: <body>
+  app/assets/javascripts/game/ship.js.erb:112:in `block in singleton class'
+  app/assets/javascripts/game/ship.js.erb:-5:in `instance_eval'
+  app/assets/javascripts/game/ship.js.erb:-5:in `singleton class'
+  app/assets/javascripts/game/ship.js.erb:-7:in `__tilt_70108769818240'
+  app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___3172279273695658693_70108734839920'
+
+
+  Rendered /Users/matt/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/matt/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/matt/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (13.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-18 18:42:11 -0800
+Processing by HomeController#root as HTML
+  Rendered home/root.html.erb within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 33ms
+
+SyntaxError (/Users/matt/Acidroids/app/assets/javascripts/game/ship.js.erb:112: syntax error, unexpected ')'
+..._erbout.concat(( image_path = ).to_s); _erbout.concat " this...
+...                               ^
+  (in /Users/matt/Acidroids/app/assets/javascripts/game/ship.js.erb)):
+  app/assets/javascripts/game/ship.js.erb:112: syntax error, unexpected ')'
+  app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___3172279273695658693_70108734839920'
+
+
+  Rendered /Users/matt/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /Users/matt/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/matt/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/matt/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-18 18:43:46 -0800
+Processing by HomeController#root as HTML
+  Rendered home/root.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 367ms (Views: 366.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-18 18:43:46 -0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:46 -0800
+
+
+Started GET "/assets/keymaster.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:46 -0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:46 -0800
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:46 -0800
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:46 -0800
+
+
+Started GET "/assets/jquery.serializeJSON.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:46 -0800
+
+
+Started GET "/assets/randomColor.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/asteroids.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/controls.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game_over.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/scores.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/models/high_score.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/collections/high_scores.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/views/controls.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/views/game.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/views/game_over.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/views/home.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/views/scores.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/routers/router.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/movingObject.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/utils.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/asteroid.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/planet.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/ship.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/bullet.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/eye.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/consoleView.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/game.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/game/gameView.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/acidroids.ico" for 127.0.0.1 at 2014-12-18 18:43:47 -0800
+
+
+Started GET "/assets/spacecat.gif" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/hydrogen.mp3" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/asteroid4.png" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/asteroid2.png" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/asteroid5.png" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/asteroid.png" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/fire.mp3" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/explosion.mp3" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/level-up.mp3" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/jab.mp3" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/asteroid3.png" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/planet.png" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:43:51 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:43:52 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:43:52 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:43:52 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:43:53 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:43:53 -0800
+
+
+Started GET "/assets/explosion.png" for 127.0.0.1 at 2014-12-18 18:43:53 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:43:56 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:43:56 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:43:57 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:43:57 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:43:58 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:43:58 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:43:58 -0800
+
+
+Started GET "/assets/explosion.png" for 127.0.0.1 at 2014-12-18 18:43:59 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:44:02 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:44:02 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:44:03 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:44:03 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:44:03 -0800
+
+
+Started GET "/assets/ship1.png" for 127.0.0.1 at 2014-12-18 18:44:04 -0800
+
+
+Started GET "/assets/ship1-invert.png" for 127.0.0.1 at 2014-12-18 18:44:04 -0800
+
+
+Started GET "/assets/mars.png" for 127.0.0.1 at 2014-12-18 18:44:04 -0800

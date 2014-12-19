@@ -13,7 +13,7 @@
 		this.game = options.game;
 		this.dir = -Math.PI / 2;
 		this.img = new Image();
-		this.img.src = Ship.IMAGE();
+		this.img.src = "<%= asset_path('ship1-invert.png') %>"
 		this.invincible = true;
 		this.destroyed = false;
 		this.counter = 0;
@@ -109,10 +109,9 @@
 		if (this.invincible) {
 			this.counter += 1;
 			if (this.counter % 20 > 10) {
-				var str = this.imagePath + '.png'
-				this.img.src = '/assets/' + this.imagePath + '.png';
+				this.img.src = "<%= asset_path('ship1.png') %>"
 			} else {
-				this.img.src = '/assets/' + this.imagePath + '-invert.png';
+				this.img.src = "<%= asset_path('ship1-invert.png') %>"
 			}
 			if (this.counter > 60) {
 				this.invincible = false;
