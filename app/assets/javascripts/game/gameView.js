@@ -42,26 +42,19 @@
 		var ship = this.game.ship;
 		if (ship.destroyed) {
 		} else {
-	    if (key.isPressed('a')) {
-				ship.power([-1, 0]);
+	    if (key.isPressed('a') || key.isPressed(37)) {
+				ship.rotate(-Math.PI / 32);
 	    }
-	    if (key.isPressed('d')) {
-				ship.power([1, 0]);
+	    if (key.isPressed('d') || key.isPressed(39)) {
+				ship.rotate(Math.PI / 32);
 	    }
-	    if (key.isPressed('w')) {
-				ship.power([0, -1]);
+	    if (key.isPressed('w') || key.isPressed(38)) {
+				ship.power([Math.cos(ship.dir), Math.sin(ship.dir)]);
 			}
-	    if (key.isPressed('s')) {
-				ship.power([0, 1]);
+	    if (key.isPressed('s') || key.isPressed(40)) {
+				ship.power([-Math.cos(ship.dir), -Math.sin(ship.dir)]);
 			}
-	    if (key.isPressed(37)) {
-					ship.rotate(-Math.PI / 32);
-	    }
-			if (key.isPressed(39)) {
-					ship.rotate(Math.PI / 32);
-			}
-			if (!key.isPressed('a') && !key.isPressed('d') &&
-				!key.isPressed('w') && !key.isPressed('s')) {
+			if (!key.isPressed('w') && !key.isPressed('s')) {
 					ship.decelerate();
 			}
 		}

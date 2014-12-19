@@ -7,15 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
-HighScore.create!({name: 'Matt', score: 10})
+HighScore.create!({name: 'Matt', score: 9001})
