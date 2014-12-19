@@ -1,0 +1,12 @@
+<h3 class='header'>Game Over</h3>
+<h4>Final Score: <%= $SCORE %></h4>
+<form id="newscore">
+  <input id="namebox" type="text" name='name' placeholder="Enter your name..."/>
+  <input type='hidden' name='score' value="<%= $SCORE %>"/>
+  <input type='submit' value='submit' style="display: none"/>
+</form>
+<ul>
+  <li><a id="controls" href="#controls">Controls</a></li>
+  <li><a id="game" href="#game">Play Again</a></li>
+  <li><a id="scores" href="#scores">High Scores</a></li>
+</ul>

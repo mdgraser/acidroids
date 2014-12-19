@@ -1,0 +1,124 @@
+(function () {
+	if (typeof Asteroids === "undefined") {
+		window.Asteroids = {};
+	}
+
+	var Ship = Asteroids.Ship = function (options) {
+		this.height = 50;
+		this.width = 50;
+		options.pos = options.pos || Ship.POSITION;
+		options.vel = Ship.VEL;
+		options.radius = Ship.RADIUS;
+		options.color = Ship.COLOR;
+		this.game = options.game;
+		this.dir = -Math.PI / 2;
+		this.img = new Image();
+		this.img.src = "<%= asset_path('ship1-invert.png') %>"
+		this.invincible = true;
+		this.destroyed = false;
+		this.counter = 0;
+		this.fireSound = new Audio();
+		this.fireSound.src = "<%= asset_path('fire.mp3') %>";
+		this.explosionSound = new Audio();
+		this.explosionSound.src = "<%= asset_path('explosion.mp3') %>";
+		var index = this.img.src.search('ship');
+		this.imagePath = new String(this.img.src.slice(index, index + 5));
+
+		Asteroids.MovingObject.call(this, options);
+	};
+
+	Ship.POSITION = [700, 400];
+	Ship.VEL = [0, 0];
+	Ship.RADIUS = 25;
+	Ship.MAX_SPEED = 9;
+	Ship.IMAGE = function () {
+		randInt = Math.floor(Math.random() * 5);
+		return ['assets/images/ship2-invert.png', 'assets/images/ship3-invert.png',
+						'assets/images/ship4-invert.png', 'assets/images/ship5-invert.png'][randInt];
+	};
+
+
+	Asteroids.Util.inherits(Ship, Asteroids.MovingObject);
+
+	Ship.prototype.relocate = function () {
+		if (!this.destroyed) {
+			this.game.lives -= 1;
+			this.vel = Ship.VEL;
+			this.explosionSound.play();
+			this.destroyed = true;
+		}
+	};
+
+	Ship.prototype.power = function (impulse) {
+		this.vel[0] += impulse[0];
+		this.vel[1] += impulse[1];
+		if (Math.sqrt(Math.pow(this.vel[0], 2) + Math.pow(this.vel[1], 2)) > Ship.MAX_SPEED) {
+			this.vel[0] *= 0.9;
+			this.vel[1] *= 0.9;
+		}
+	};
+
+	Ship.prototype.decelerate = function () {
+		this.vel[0] /= 1.02;
+		this.vel[1] /= 1.02;
+	};
+
+	Ship.prototype.rotate = function (torque) {
+		this.dir += torque;
+		if (this.dir < 0) { this.dir += 2 * Math.PI };
+		if (this.dir > 2 * Math.PI) { this.dir -= 2 * Math.PI };
+
+	};
+
+	Ship.prototype.fireBullet = function () {
+		this.fireSound.pause();
+		this.fireSound.currentTime = 0;
+		this.fireSound.play();
+		this.game.bullets.push( new Asteroids.Bullet({ ship: this, game: this.game }) )
+	};
+
+	Ship.prototype.draw = function (ctx) {
+		ctx.save();
+		ctx.translate(this.pos[0], this.pos[1]);
+		ctx.rotate(this.dir);
+		ctx.translate(-this.pos[0], -this.pos[1]);
+		ctx.drawImage(this.img, this.pos[0] - this.radius, this.pos[1] - this.radius, this.width + 5, this.height + 5);
+		ctx.restore();
+
+		if (this.destroyed) {
+			this.img.src = "<%= asset_path('explosion.png') %>"
+			this.counter += 1;
+			if (this.counter % 2 === 0) {
+				this.width += this.counter * 3;
+				this.height += this.counter * 3;
+				this.radius = this.width / 2;
+			}
+			if (this.counter > 75) {
+				this.img.src = this.imagePath + "-invert.png";
+				this.width = 50;
+				this.height = 50;
+				this.radius = 25;
+				this.counter = 0;
+				this.pos = Ship.POSITION;
+				this.vel = Ship.VEL;
+				this.destroyed = false;
+				this.game.checkLives();
+				this.invincible = true;
+			}
+		}
+		if (this.invincible) {
+			this.counter += 1;
+			if (this.counter % 20 > 10) {
+				var str = this.imagePath + '.png'
+				this.img.src = '/assets/' + this.imagePath + '.png';
+			} else {
+				this.img.src = '/assets/' + this.imagePath + '-invert.png';
+			}
+			if (this.counter > 60) {
+				this.invincible = false;
+				this.counter = 0;
+			}
+		}
+	};
+
+})();

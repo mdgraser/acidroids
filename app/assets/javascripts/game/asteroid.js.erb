@@ -1,0 +1,43 @@
+(function () {
+	if (typeof Asteroids === "undefined") {
+		window.Asteroids = {};
+	}
+
+	var Asteroid = Asteroids.Asteroid = function (options) {
+		options.pos = Asteroid.POSITION();
+		options.vel = options.vel || Asteroids.Util.randomVec(Asteroid.SPEED());
+		options.radius = Asteroid.RADIUS();
+		options.game = options.game
+		Asteroids.MovingObject.call(this, options);
+		this.img = new Image();
+		this.img.src = Asteroid.IMAGE();
+	};
+
+	Asteroid.POSITION = function () {
+		return [1000 * Math.random(), 700 * Math.random()];
+		// rand = Math.floor(Math.random() * 2);
+		// return [[[0, 1000][rand], Math.random() * 700], [Math.random() * 1000, [0, 700][rand]]][rand];
+	};
+	Asteroid.RADIUS = function () { return (10 + 40 * Math.random()); };
+	Asteroid.SPEED = function() { return (1 + 8 * Math.random()); };
+	Asteroid.IMAGE = function () {
+		randInt = Math.floor(Math.random() * 6);
+		return ["<%= asset_path('asteroid.png') %>", "<%= asset_path('asteroid2.png') %>", "<%= asset_path('asteroid3.png') %>", "<%= asset_path('asteroid4.png') %>",
+						"<%= asset_path('asteroid5.png') %>", "<%= asset_path('asteroid6.png') %>"][randInt];
+	};
+
+	Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
+
+	Asteroid.prototype.collideWith = function (otherObj) {
+		if (otherObj instanceof Asteroids.Ship) {
+			if (otherObj.invincible) {
+			} else {
+				otherObj.relocate();
+			}
+		}
+	};
+
+	Asteroid.prototype.draw = function (ctx) {
+		ctx.drawImage(this.img, this.pos[0] - this.radius - 2, this.pos[1] - this.radius - 2, (this.radius + 2) * 2, (this.radius + 2) * 2);
+	};
+})();

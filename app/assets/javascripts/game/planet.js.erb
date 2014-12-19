@@ -1,0 +1,64 @@
+(function () {
+	if (typeof Asteroids === "undefined") {
+		window.Asteroids = {};
+	}
+
+
+	var Planet = Asteroids.Planet = function (options) {
+		options.pos = this.randomPosition();
+		options.vel = Asteroids.Util.randomVec(Planet.SPEED());
+		options.radius = Planet.RADIUS();
+		options.game = options.game
+		Asteroids.MovingObject.call(this, options);
+		this.img = new Image();
+		this.img.src = Planet.IMAGE();
+	};
+
+	Planet.POSITION = function () {
+		randPositive = 300
+		return [[-300 * Math.random(), ]]
+	}
+	Planet.RADIUS = function () { return (180 + 50 * Math.random()); };
+	Planet.SPEED = function() { return (2 + 2 * Math.random()); };
+	Planet.IMAGE = function () {
+		var rand = Math.floor(Math.random() * 8);
+		return ["<%= asset_path('planet.png') %>", "<%= asset_path('mars.png') %>",
+						"<%= asset_path('mercury.png') %>", "<%= asset_path('jupiter.png') %>",
+						"<%= asset_path('venus.png') %>", "<%= asset_path('earth.png') %>",
+						"<%= asset_path('uranus.png') %>", "<%= asset_path('neptune.png') %>"][rand]
+	};
+
+	Asteroids.Util.inherits(Planet, Asteroids.MovingObject);
+
+	Planet.prototype.randomPosition = function () {
+		var rand = Math.floor(Math.random() * 4);
+		var maxX = 1050;
+		var maxY = 850;
+		var min = -250;
+
+		return [[maxX, Math.random() * 700], [min, Math.random() * 700],
+		 				[Math.random() * 1000, maxY], [Math.random() * 1000, min]][rand];
+	};
+
+	Planet.prototype.collideWith = function (otherObj) {
+		if (otherObj instanceof Asteroids.Ship) {
+			if (otherObj.invincible) {
+			} else {
+				otherObj.relocate();
+			}
+		}
+		if (otherObj instanceof Asteroids.Bullet) {
+			this.game.remove(otherObj);
+		}
+		if (otherObj instanceof Asteroids.Asteroid) {
+			this.game.remove(otherObj);
+		}
+	};
+
+	Planet.prototype.isWrappable = false;
+
+	Planet.prototype.draw = function (ctx) {
+		ctx.drawImage(this.img, this.pos[0] - this.radius, this.pos[1] - this.radius, (this.radius * 2) + 30, (this.radius * 2) + 30);
+	};
+
+})();

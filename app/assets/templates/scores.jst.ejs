@@ -1,0 +1,18 @@
+<h2 class='header'>High Scores</h2>
+<table>
+<% var index = 0 %>
+<% highScores.each(function (highScore) { %>
+  <% if (index < 10) { %>
+    <% index++ %>
+  <tr>
+    <td><%= highScore.escape('name') %></td>
+    <td><%= highScore.escape('score') %></td>
+  </tr>
+  <% } %>
+<% }) %>
+</table>
+<ul>
+  <li><a id="home" href="#">Home</a></li>
+  <li><a id="game" href="#game">Play</a></li>
+  <li><a id="controls" href="#controls">Controls</a></li>
+</ul>
