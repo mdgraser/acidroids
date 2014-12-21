@@ -11,19 +11,23 @@
 	GameView.prototype.start = function () {
 		var view = this;
 		if (!this.game.isOver) {
-		setInterval( function() {
+		var bulletIntervalId = setInterval( function() {
 			if (!view.game.isOver) {
 				view.shoot();
 			}
 		}, 105);
-		setInterval( function() {
-			if (!view.game.isOver) {
+		var gameIntervalId = setInterval( function() {
+			if (view.game.isOver) {
+				clearInterval(bulletIntervalId);
+				clearInterval(planetIntervalId);
+				clearInterval(gameIntervalId);
+			} else {
 				view.checkKeys();
 				view.game.step();
 				view.game.draw(view.ctx);
 			}
 		}, 20);
-		setInterval( function () {
+		var planetIntervalId = setInterval( function () {
 			if (!view.game.isOver) {
 				view.game.addPlanet();
 			}

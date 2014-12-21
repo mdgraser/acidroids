@@ -22,7 +22,7 @@
 		ctx.fill();
 
 		//Draws the pupil
-		ctx.shadowBlur = 90;
+		ctx.shadowBlur = 50;
 		ctx.shadowColor = "#B20000";
 		ctx.fillStyle = '#000000';
 		ctx.beginPath()

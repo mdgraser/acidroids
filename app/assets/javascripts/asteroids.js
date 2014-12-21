@@ -20,13 +20,13 @@ $(document).ready(function () {
 
 
 
-  setInterval(colorize, 75)
+  setInterval(colorize, 125)
 
   function colorize() {
     var divs = [];
     divs.push($('.header'));
 
-    $('a').each(function(index) {
+    $('p').each(function(index) {
       divs.push($(this))
     });
 
@@ -38,17 +38,19 @@ $(document).ready(function () {
       divs.push($(this))
     });
 
-    $('p').each(function(index) {
+    $('li').each(function(index) {
       divs.push($(this))
     });
 
     for (var j = 0; j < divs.length; j++) {
       var chars = divs[j].text().split('');
-      divs[j].html('');
+      var element = $('<span></span>');
       for(var i = 0; i < chars.length; i++) {
         var span = $('<span>' + chars[i] + '</span>').css("color", randomColor());
-        divs[j].append(span);
+        element.append(span);
+
       }
+      divs[j].html(element);
     };
   };
 });

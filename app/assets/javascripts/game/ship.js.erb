@@ -6,8 +6,8 @@
 	var Ship = Asteroids.Ship = function (options) {
 		this.height = 50;
 		this.width = 50;
-		options.pos = options.pos || Ship.POSITION;
-		options.vel = Ship.VEL;
+		options.pos = options.pos || [500, 350];
+		options.vel = [0, 0]
 		options.radius = Ship.RADIUS;
 		options.color = Ship.COLOR;
 		this.game = options.game;
@@ -27,7 +27,7 @@
 		Asteroids.MovingObject.call(this, options);
 	};
 
-	Ship.POSITION = [700, 400];
+	Ship.POSITION = [500, 350];
 	Ship.VEL = [0, 0];
 	Ship.RADIUS = 25;
 	Ship.MAX_SPEED = 9;
@@ -43,9 +43,11 @@
 	Ship.prototype.relocate = function () {
 		if (!this.destroyed) {
 			this.game.lives -= 1;
-			this.vel = Ship.VEL;
+			this.vel = [0, 0];
 			this.explosionSound.play();
 			this.destroyed = true;
+			this.width = 200;
+			this.height = 200;
 		}
 	};
 
@@ -78,13 +80,6 @@
 	};
 
 	Ship.prototype.draw = function (ctx) {
-		ctx.save();
-		ctx.translate(this.pos[0], this.pos[1]);
-		ctx.rotate(this.dir);
-		ctx.translate(-this.pos[0], -this.pos[1]);
-		ctx.drawImage(this.img, this.pos[0] - this.radius, this.pos[1] - this.radius, this.width + 5, this.height + 5);
-		ctx.restore();
-
 		if (this.destroyed) {
 			this.img.src = "<%= asset_path('explosion.png') %>"
 			this.counter += 1;
@@ -93,17 +88,20 @@
 				this.height += this.counter * 3;
 				this.radius = this.width / 2;
 			}
+			if (this.counter > 65) {
+				this.game.checkLives();
+			}
 			if (this.counter > 75) {
 				this.img.src = this.imagePath + "-invert.png";
 				this.width = 50;
 				this.height = 50;
 				this.radius = 25;
 				this.counter = 0;
-				this.pos = Ship.POSITION;
-				this.vel = Ship.VEL;
+				this.pos = [500, 350];
+				this.vel = [0, 0];
 				this.destroyed = false;
-				this.game.checkLives();
 				this.invincible = true;
+				this.dir = -Math.PI / 2;
 			}
 		}
 		if (this.invincible) {
@@ -118,6 +116,12 @@
 				this.counter = 0;
 			}
 		}
-	};
 
+		ctx.save();
+		ctx.translate(this.pos[0], this.pos[1]);
+		ctx.rotate(this.dir);
+		ctx.translate(-this.pos[0], -this.pos[1]);
+		ctx.drawImage(this.img, this.pos[0] - this.radius, this.pos[1] - this.radius, this.width + 5, this.height + 5);
+		ctx.restore();
+	};
 })();

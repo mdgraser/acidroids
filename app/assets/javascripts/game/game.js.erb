@@ -88,12 +88,20 @@
 		var size = 400;
 		var $display = $("#overlay-text");
 		$display.html(this.level);
-		setInterval(function () {
-			$display.css({ 'font-size': size });
-			$display.show();
-			size -= 20;
-		}, 20);
-		$display.hide();
+		var printText = function () {
+			if (size > 0) {
+				setTimeout(function () {
+					$display.css({'font-size': size});
+					$display.show();
+					size -= 20;
+					printText();
+				}, 20);
+			} else {
+				$display.hide();
+			}
+		}
+
+		printText();
 	};
 
 
@@ -126,7 +134,7 @@
 					index++
 					$display.html(string.slice(0, index));
 					$display.show();
-					if (index !== 5) {
+					if (index !== 5 && index !== 10) {
 						game.jabSound.play();
 					}
 					printText(string);

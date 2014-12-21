@@ -14,10 +14,6 @@
 		this.img.src = Planet.IMAGE();
 	};
 
-	Planet.POSITION = function () {
-		randPositive = 300
-		return [[-300 * Math.random(), ]]
-	}
 	Planet.RADIUS = function () { return (180 + 50 * Math.random()); };
 	Planet.SPEED = function() { return (2 + 2 * Math.random()); };
 	Planet.IMAGE = function () {
@@ -32,8 +28,8 @@
 
 	Planet.prototype.randomPosition = function () {
 		var rand = Math.floor(Math.random() * 4);
-		var maxX = 1050;
-		var maxY = 850;
+		var maxX = 1250;
+		var maxY = 950;
 		var min = -250;
 
 		return [[maxX, Math.random() * 700], [min, Math.random() * 700],
@@ -48,17 +44,17 @@
 			}
 		}
 		if (otherObj instanceof Asteroids.Bullet) {
-			this.game.remove(otherObj);
+			// this.game.remove(otherObj);
 		}
 		if (otherObj instanceof Asteroids.Asteroid) {
-			this.game.remove(otherObj);
+			// this.game.remove(otherObj);
 		}
 	};
 
 	Planet.prototype.isWrappable = false;
 
 	Planet.prototype.draw = function (ctx) {
-		ctx.drawImage(this.img, this.pos[0] - this.radius, this.pos[1] - this.radius, (this.radius * 2) + 30, (this.radius * 2) + 30);
+		ctx.drawImage(this.img, this.pos[0] - this.radius - 15, this.pos[1] - this.radius - 15, (this.radius * 2) + 30, (this.radius * 2) + 30);
 	};
 
 })();

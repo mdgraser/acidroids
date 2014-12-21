@@ -11,7 +11,10 @@ Asteroids.Views.GameOverView = Backbone.View.extend({
   },
 
   events: {
-    'submit form' : 'submit'
+    'submit form' : 'submit',
+    'click li.game' : 'game',
+    'click li.controls' : 'controls',
+    'click li.scores' : 'scores'
   },
 
   submit: function (event) {
@@ -27,6 +30,18 @@ Asteroids.Views.GameOverView = Backbone.View.extend({
         debugger
       }
     });
+  },
+
+  game: function () {
+    Backbone.history.navigate('#game', {trigger: true});
+  },
+
+  controls: function () {
+    Backbone.history.navigate('#controls', {trigger: true});
+  },
+
+  scores: function () {
+    Backbone.history.navigate('#scores', {trigger: true});
   }
 
 });
