@@ -17,13 +17,24 @@ $(document).ready(function () {
 
   Asteroids.initialize();
 
+  setInterval(colorize, 100)
 
-
-
-  setInterval(colorize, 125)
+  // function colorize() {
+  //   var spans = [];
+  //
+  //   $('span').each(function(index) {
+  //     spans.push($(this))
+  //   });
+  //
+  //   for (var i = 0; i < spans.length; i++) {
+  //     spans[i].css("color", randomColor());
+  //   };
+  // };
 
   function colorize() {
     var divs = [];
+    var spans = [];
+
     divs.push($('.header'));
 
     $('p').each(function(index) {
@@ -38,9 +49,13 @@ $(document).ready(function () {
       divs.push($(this))
     });
 
-    $('li').each(function(index) {
-      divs.push($(this))
+    $('li span').each(function(index) {
+      spans.push($(this))
     });
+
+    for (var i = 0; i < spans.length; i++) {
+      spans[i].css('color', randomColor());
+    };
 
     for (var j = 0; j < divs.length; j++) {
       var chars = divs[j].text().split('');
