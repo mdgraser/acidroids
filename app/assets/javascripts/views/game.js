@@ -16,7 +16,6 @@ Asteroids.Views.GameView = Backbone.View.extend({
 
   launchGame: function () {
     setTimeout(function () {
-      debugger
       var canvasEl = document.getElementsByTagName("canvas")[0];
       canvasEl.width = Asteroids.Game.DIM_X;
       canvasEl.height = Asteroids.Game.DIM_Y;

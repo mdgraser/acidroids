@@ -9,12 +9,14 @@
 		options.pos = [this.ship.pos[0], this.ship.pos[1]];
 		options.vel = Bullet.VELOCITY(this.ship.dir);
 		options.radius = 4;
-		options.color = Bullet.COLOR;
+		options.color = 'white';
 
 		Asteroids.MovingObject.call(this, options);
 	};
 
-	Bullet.COLOR = "#FFFFFF"
+	Bullet.COLOR = function () {
+		return randomColor({luminosity: 'bright'});
+	}
 	Bullet.VELOCITY = function (dir) {
 		return [Math.cos(dir) * 25, Math.sin(dir) * 25];
 	};
