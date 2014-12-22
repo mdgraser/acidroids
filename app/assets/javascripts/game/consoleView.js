@@ -18,7 +18,6 @@
 				var point = [Asteroids.Game.DIM_X - 20 - i * 30, 25];
 				ctx.save();
 				ctx.translate(point[0], point[1]);
-				ctx.rotate(-Math.PI / 2);
 				ctx.translate(-point[0], -point[1]);
 				ctx.drawImage(this.game.ship.img, point[0] - 10, point[1] - 10, 20, 20);
 				ctx.restore();

@@ -21,7 +21,7 @@
 			}
 		}, 2000 * Math.random());
 		var ufoIntervalId = setInterval( function () {
-			if (!view.game.isOver && view.game.level > 3) {
+			if (!view.game.isOver && view.game.level > 3 && view.game.asteroids.length > 5) {
 				view.game.addUfo();
 			}
 		}, 20000 * Math.random());

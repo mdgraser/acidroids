@@ -4,7 +4,7 @@ Asteroids.Views.GameOverView = Backbone.View.extend({
   id: 'main',
 
   render: function () {
-    var content = this.template({});
+    var content = this.template({ score: this.model });
     this.$el.html(content);
 
     return this;
@@ -20,6 +20,7 @@ Asteroids.Views.GameOverView = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var params = $(event.currentTarget).serializeJSON();
+    params.score = $SCORE;
     this.model.set(params);
     var form = this;
     Asteroids.highScores.create(this.model, {

@@ -1,8 +1,7 @@
 <h3 class='header'>Game Over</h3>
 <h4>Final Score: <%= $SCORE %></h4>
 <form id="newscore">
-  <input id="namebox" type="text" name='name' placeholder="Enter your name..."/>
-  <input type='hidden' name='score' value="<%= $SCORE %>"/>
+  <input id="namebox" type="text" name='name' value='<%= score.escape('name') %>'placeholder="Enter your name..."/>
   <input type='submit' value='submit' style="display: none"/>
 </form>
 <ul>
