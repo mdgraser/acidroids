@@ -28,7 +28,7 @@
 		this.pos[1] += this.vel[1];
 		if (this.isWrappable) {
 			this.game.wrap(this.pos);
-		} else if (this instanceof Asteroids.Planet) {
+		} else if (this instanceof Asteroids.Planet || this instanceof Asteroids.Ufo) {
 			if ((this.pos[0] > this.game.dim_x + 250) ||
 					(this.pos[0] < -250) ||
 					(this.pos[1] > this.game.dim_y + 250) ||

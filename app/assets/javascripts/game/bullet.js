@@ -28,6 +28,10 @@
 			this.game.remove(otherObj);
 			this.game.score += 1;
 		}
+		if (otherObj instanceof Asteroids.Ufo) {
+			this.game.remove(otherObj);
+			this.game.score += 25;
+		}
 	};
 
 	Bullet.prototype.isWrappable = false;

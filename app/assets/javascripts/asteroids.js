@@ -19,18 +19,6 @@ $(document).ready(function () {
 
   setInterval(colorize, 100)
 
-  // function colorize() {
-  //   var spans = [];
-  //
-  //   $('span').each(function(index) {
-  //     spans.push($(this))
-  //   });
-  //
-  //   for (var i = 0; i < spans.length; i++) {
-  //     spans[i].css("color", randomColor());
-  //   };
-  // };
-
   function colorize() {
     var divs = [];
     var spans = [];

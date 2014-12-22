@@ -7,6 +7,7 @@
 		this.consoleView = new Asteroids.ConsoleView({ game: this });
 		this.ship = new Asteroids.Ship({ game: this });
 		this.planets = [];
+		this.ufos = [];
 		this.asteroids = [];
 		this.bullets = [];
 		this.leftEye = new Asteroids.Eye({ pos: [625, 365], radius: 40, watched: this.ship })
@@ -37,7 +38,7 @@
 	};
 
 	Game.prototype.allObjects = function () {
-		return this.planets.concat(this.bullets).concat(this.asteroids).concat([this.ship]);
+		return this.planets.concat(this.bullets).concat(this.asteroids).concat(this.ufos).concat([this.ship]);
 
 	};
 
@@ -160,6 +161,12 @@
 		}
 	};
 
+	Game.prototype.addUfo = function () {
+		if (this.ufos.length === 0) {
+			this.ufos.push(new Asteroids.Ufo({ game: this }));
+		}
+	};
+
 	Game.prototype.checkCollisions = function () {
 		for (var i = 0; i < this.allObjects().length; i++) {
 			for (var j = i + 1; j < this.allObjects().length; j++) {
@@ -187,6 +194,10 @@
 		}
 		if (obj instanceof Asteroids.Planet) {
 			this.planets.splice(0, 1);
+		}
+		if (obj instanceof Asteroids.Ufo) {
+			obj.sfx.pause();
+			this.ufos.splice(0, 1);
 		}
 	};
 

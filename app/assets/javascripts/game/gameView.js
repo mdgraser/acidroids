@@ -10,14 +10,25 @@
 
 	GameView.prototype.start = function () {
 		var view = this;
-		if (!this.game.isOver) {
 		var bulletIntervalId = setInterval( function() {
 			if (!view.game.isOver) {
 				view.shoot();
 			}
 		}, 105);
+		var planetIntervalId = setInterval( function () {
+			if (!view.game.isOver) {
+				view.game.addPlanet();
+			}
+		}, 2000 * Math.random());
+		var ufoIntervalId = setInterval( function () {
+			if (!view.game.isOver && view.game.level > 3) {
+				view.game.addUfo();
+			}
+		}, 20000 * Math.random());
+
 		var gameIntervalId = setInterval( function() {
 			if (view.game.isOver) {
+				clearInterval(ufoIntervalId);
 				clearInterval(bulletIntervalId);
 				clearInterval(planetIntervalId);
 				clearInterval(gameIntervalId);
@@ -27,12 +38,6 @@
 				view.game.draw(view.ctx);
 			}
 		}, 20);
-		var planetIntervalId = setInterval( function () {
-			if (!view.game.isOver) {
-				view.game.addPlanet();
-			}
-		}, 1000 * Math.random());
-	}
 	};
 
 	GameView.prototype.shoot = function () {

@@ -27,6 +27,7 @@
 //= require ./game/utils
 //= require ./game/asteroid
 //= require ./game/planet
+//= require ./game/ufo
 //= require ./game/ship
 //= require ./game/bullet
 //= require ./game/eye
