@@ -13,7 +13,7 @@
 		this.game = options.game;
 		this.dir = -Math.PI / 2;
 		this.img = new Image();
-		this.img.src = Ship.IMAGE();
+		this.img.src = "<%= asset_path('ship1.png') %>"//Ship.IMAGE();
 		this.invincible = true;
 		this.destroyed = false;
 		this.counter = 0;
