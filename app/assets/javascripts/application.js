@@ -34,3 +34,4 @@
 //= require ./game/consoleView
 //= require ./game/game
 //= require ./game/gameView
+//= require  app_assets

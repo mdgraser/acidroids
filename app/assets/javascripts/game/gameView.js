@@ -14,7 +14,7 @@
 			if (!view.game.isOver) {
 				view.shoot();
 			}
-		}, 105);
+		}, 150);
 		var planetIntervalId = setInterval( function () {
 			if (!view.game.isOver) {
 				view.game.addPlanet();

@@ -19,7 +19,7 @@
 		// return [[[0, 1000][rand], Math.random() * 700], [Math.random() * 1000, [0, 700][rand]]][rand];
 	};
 	Asteroid.RADIUS = function () { return (10 + 40 * Math.random()); };
-	Asteroid.SPEED = function() { return (1 + 8 * Math.random()); };
+	Asteroid.SPEED = function() { return (1 + 5 * Math.random()); };
 	Asteroid.IMAGE = function () {
 		randInt = Math.floor(Math.random() * 6);
 		return ["<%= asset_path('asteroid.png') %>", "<%= asset_path('asteroid2.png') %>", "<%= asset_path('asteroid3.png') %>", "<%= asset_path('asteroid4.png') %>",

@@ -30,7 +30,7 @@
 	Ship.POSITION = [500, 350];
 	Ship.VEL = [0, 0];
 	Ship.RADIUS = 25;
-	Ship.MAX_SPEED = 9;
+	Ship.MAX_SPEED = 7;
 	Ship.IMAGE = function () {
 		randInt = Math.floor(Math.random() * 9);
 		return ["<%= asset_path('ship1.png') %>", "<%= asset_path('ship2.png') %>",
@@ -115,7 +115,7 @@
 			ctx.arc(this.pos[0], this.pos[1], this.radius * 2, 0, Math.PI * 2);
 			ctx.stroke();
 
-			if (this.counter > 60) {
+			if (this.counter > 90) {
 				this.invincible = false;
 				this.counter = 0;
 			}

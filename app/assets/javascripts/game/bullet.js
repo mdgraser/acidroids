@@ -18,7 +18,7 @@
 		return randomColor({luminosity: 'bright'});
 	}
 	Bullet.VELOCITY = function (dir) {
-		return [Math.cos(dir) * 25, Math.sin(dir) * 25];
+		return [Math.cos(dir) * 20, Math.sin(dir) * 20];
 	};
 
 	Asteroids.Util.inherits(Bullet, Asteroids.MovingObject);
