@@ -4,8 +4,11 @@ Asteroids.Views.GameOverView = Backbone.View.extend({
   id: 'main',
 
   render: function () {
-    $GAMEOVERMUSIC = "<%= asset_path('fairyfountain.mp3') %>";
-    var content = this.template({ score: this.model });
+    this.music = "<%= asset_path('fairyfountain.mp3') %>";
+    var content = this.template({
+      score: this.model,
+      music: this.music
+    });
     this.$el.html(content);
 
     return this;
